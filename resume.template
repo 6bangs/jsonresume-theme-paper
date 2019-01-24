@@ -138,7 +138,7 @@
                       {{/if}}
                       {{#if highlights.length}}
                         {{#each highlights}}
-                          <p class="highlight">{{.}}</p>
+                          <p class="highlight">{{{.}}}</p>
                         {{/each}}
                       {{/if}}
                     </div>
