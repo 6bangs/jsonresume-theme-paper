@@ -20,7 +20,15 @@ body, html {
   border: 1px solid #757575;
   padding: 1px;
   border-radius: 4px;
+}
 
+a {
+  text-decoration: none;
+  color: #0277bd;
+}
+
+a:hover {
+  color: #4fc3f7;
 }
 
 /* Header */
@@ -213,15 +221,6 @@ body > div > article > div > section:last-child {
   color: #424242;
   
   font-weight:600;
-}
-
-.content-text ul li a, div.content-text.work-listing.education-listing > p > strong > a {
-  text-decoration: none;
-  color: #0277bd;
-}
-
-.content-text ul li a:hover {
-  color:#4fc3f7;
 }
 
 .work-listing p {

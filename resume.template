@@ -269,6 +269,30 @@
           </section>
           {{/if}}
 
+          {{#if resume.references.length}}
+          <section class="content">
+            <div class="row">
+              <div class="content-cat">
+                References
+              </div>
+              <div class="content-text skills-listing">
+                {{#foreach resume.references}}
+                  <p>
+                    <span class="name">
+                      {{#if name}}
+                        <strong>{{name}}</strong>
+                      {{/if}}
+                    </span>
+                    {{#if reference}}
+                      {{{reference}}}
+                    {{/if}}
+                  </p>
+                {{/foreach}}
+              </div>
+            </div>
+          </section>
+          {{/if}}
+
   <!-- LANGUAGE -->
           {{#if resume.languages.length}}
             <section class="content">
