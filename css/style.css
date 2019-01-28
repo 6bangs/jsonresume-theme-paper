@@ -1,14 +1,14 @@
 body, html {
-  padding-top:2.5em;
-  margin:0;
-  background-color:#fafafa;
+  padding-top: 2.5em;
+  margin: 0;
+  background-color: #fafafa;
 }
 
 .note {
-  display:block;
+  display: block;
   position: absolute;
-  top:10px;
-  left:10px;
+  top: 10px;
+  left: 10px;
 
   font-family: "Open Sans";
   font-size: 0.6em;
@@ -229,7 +229,7 @@ body > div > article > div > section:last-child {
   font-size:0.7em;
   
   color: #424242;
-  
+
   margin-left:2em;
   margin-top:0.45em;
   margin-bottom: 0.45em;
@@ -250,7 +250,10 @@ div.content-text.work-listing.education-listing > p:nth-child(2) {
   padding-left:0.5em;
   
   border-left:1px solid #e0e0e0;
-  
+}
+
+.work-listing .highlight br {
+  line-height: 200%;
 }
 
 .education-listing > .heading {

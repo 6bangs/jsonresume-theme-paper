@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
   <title>{{#resume.basics}}{{name}}{{/resume.basics}}</title>
-  <link href='//fonts.googleapis.com/css?family=Merriweather:400,300,700' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
   <style>{{{css}}}</style>
   <style media="print">{{{print}}}</style>
 </head>
@@ -72,20 +72,14 @@
                         <li>{{address}}</li>
                       </ul>
                     {{/if}}
-                    {{#if city}}
+                    {{#ifCond city '&&' region}}
                       {{#if postalCode}}
                         <ul>
-                          <li>Postal Code & City</li>
-                          <li>{{postalCode}} {{city}}</li>
+                          <li>City, State & Zip</li>
+                          <li>{{city}}, {{region}} {{postalCode}}</li>
                         </ul>
                       {{/if}}
-                    {{/if}}
-                    {{#if region}}
-                      <ul>
-                        <li>Region</li>
-                        <li>{{region}}</li>
-                      </ul>
-                    {{/if}}
+                    {{/ifCond}}
                   </div>
                 </div>
               </section>
@@ -107,26 +101,26 @@
                       {{/if}}
                       {{#if startDate}}
                         {{#if endDate}}
-                          <p>{{startDate}} till {{endDate}}</p>
+                          <p>{{startDate}} to {{endDate}}</p>
                         {{else}}
-                          <p>{{startDate}} till today</p>
+                          <p>{{startDate}} to present</p>
                         {{/if}}
                       {{/if}}
                     </div>
                     <div class="content-text work-listing education-listing">
                       {{#ifCond company '||' position}}
-                        {{#if $first}}
-                          <p style="margin-top:2.4em;">
-                        {{else}}
-                          <p>
-                        {{/if}}
+                        <p>
                         {{#ifCond website '&&' company}}
-                          <strong>{{position}}</strong>
-                          at <strong><a href="{{website}}">{{company}}:</a></strong>
+                          {{#if position}}
+                            <strong>{{position}}</strong> at
+                          {{/if}}
+                          <strong><a href="{{website}}">{{company}}:</a></strong>
                         {{else}}
                           {{#if company.length}}
-                            <strong>{{position}}</strong>
-                            at <strong>{{company}}:</strong>
+                            {{#if position}}
+                              <strong>{{position}}</strong> at
+                            {{/if}}
+                            <strong>{{company}}:</strong>
                           {{else}}
                             <strong>{{position}}:</strong>
                           {{/if}}
@@ -157,7 +151,7 @@
                     {{/if}}
                     {{#if startDate}}
                       {{#if endDate}}
-                        <p>{{startDate}} till {{endDate}}</p>
+                        <p>{{startDate}} to {{endDate}}</p>
                       {{/if}}
                     {{/if}}
                   </div>
@@ -192,24 +186,24 @@
                       {{/if}}
                       {{#if startDate}}
                         {{#if endDate}}
-                          <p>{{startDate}} till {{endDate}}</p>
+                          <p>{{startDate}} to {{endDate}}</p>
                         {{/if}}
                       {{/if}}
                     </div>
                     <div class="content-text work-listing education-listing">
                       {{#if institution}}
-                        {{#if $first}}
-                          <p class="heading" style="margin-top:2.35em;">{{institution}}</p>
-                        {{else}}
-                          <p class="heading">{{institution}}</p>
-                        {{/if}}
+                        <p class="heading">{{institution}}</p>
                       {{/if}}
                       {{#if area}}
                         <p class="highlight">
                           {{#if studyType}}
-                          {{studyType}}:
+                            {{studyType}}:
                           {{/if}}
                           <i>{{area}} {{#if gpa}}({{gpa}}){{/if}}</i>
+                          {{#if minors.length}}
+                            <br/>
+                            Minors: <i>{{#commalist minors}}{{.}}{{/commalist}}</i>
+                          {{/if}}
                         </p>
                       {{/if}}
                     </div>
@@ -226,17 +220,17 @@
                     {{#if $first}}
                       Awards
                     {{/if}}
-                    {{#if title}}
-                      <p>{{title}}</p>
+                    {{#if awarder}}
+                      <p>{{awarder}}</p>
                     {{/if}}
                     {{#if date}}
                       <p style="margin-top:0.25em;">{{date}}</p>
                     {{/if}}
                   </div>
                   <div class="content-text work-listing">
-                    {{#if awarder}}
-                      <strong><p class="heading">{{awarder}}</p></strong>
-                    {{/if}}
+                    {{#foreach titles}}
+                      <p class="heading"><strong>{{.}}</strong></p>
+                    {{/foreach}}
                     {{#if summary}}
                       <p class="highlight">{{summary}}</p>
                     {{/if}}
